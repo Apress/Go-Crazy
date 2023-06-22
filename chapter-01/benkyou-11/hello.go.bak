@@ -1,0 +1,34 @@
+// Including main package
+package main
+
+// Importing fmt and time
+import (
+	"fmt"
+	"time"
+)
+
+// Main function
+func main() {
+
+	// Defining function parameter of
+	// AfterFunc() method
+	f := func(n int) func() {
+		return func() {
+			fmt.Printf("Function called by AfterFunc() after %d seconds\n", n)
+		}
+	}
+	g := f(3)
+	h := f(5)
+
+	// Calling AfterFunc() method with its
+	// parameter
+
+	Timer1 := time.AfterFunc(time.Duration(3)*time.Second, g)
+	defer Timer1.Stop()
+
+	Timer2 := time.AfterFunc(time.Duration(5)*time.Second, h)
+	defer Timer2.Stop()
+
+	// Calling sleep method
+	//time.Sleep(10 * time.Second)
+}

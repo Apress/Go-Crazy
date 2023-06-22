@@ -1,0 +1,17 @@
+{
+ "FirstName": "Nicolas",
+ "LastName": "Modrzyk",
+ "Email": "hellonico at gmail.com",
+ "Age": 43,
+ "MonthlySalary": [
+  {
+   "Basic": 15000
+  },
+  {
+   "Basic": 16000
+  },
+  {
+   "Basic": 17000
+  }
+ ]
+}
