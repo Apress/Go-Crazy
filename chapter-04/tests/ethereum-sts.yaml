@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ethereum-goerli
+  namespace: ethereum
+  labels:
+    app: ethereum-goerli
+spec:
+  serviceName: ethereum-goerli
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ethereum-goerli
+  template:
+    metadata:
+      labels:
+        app: ethereum-goerli
+    spec:
+      containers:
+        - name: client
+          command: ['geth']
+          args:
+            - '--goerli'
+            - '--syncmode=light'
+            - '--cache=128'
+          image: ethereum/client-go:stable
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: "500m"
+              memory: 1Gi
+            requests:
+              cpu: "500m"
+              memory: 1Gi
+          ports:
+            - containerPort: 30303
+              name: p2p
+              protocol: TCP
+            - containerPort: 8545
+              name: rpc
+              protocol: TCP
+          volumeMounts:
+            - name: data
+              mountPath: /data
+  # These are converted to volume claims by the controller
+  # and mounted at the paths mentioned above.
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: standard
+        resources:
+          requests:
+            storage: 1Gi

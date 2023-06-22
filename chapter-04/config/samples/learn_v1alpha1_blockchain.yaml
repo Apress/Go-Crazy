@@ -1,0 +1,25 @@
+apiVersion: learn.gocrazy.com/v1alpha1
+kind: Blockchain
+metadata:
+  labels:
+    app.kubernetes.io/name: blockchain
+    app.kubernetes.io/instance: blockchain-sample
+    app.kubernetes.io/part-of: blockchain-operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: blockchain-operator
+  name: blockchain-sample
+  namespace: ethereum
+spec:
+  replicas: 1
+  image: ethereum/client-go:stable
+  command: ['geth']
+  cpu: '600m'
+  memory: '500Mi'
+  client-args:
+    - '--goerli'
+    - '--syncmode=light'
+    - '--cache=128'
+    - '--datadir=data'
+    - '--http'
+    - '--http.api=eth,net,web3'
+    - '--log.debug=true'

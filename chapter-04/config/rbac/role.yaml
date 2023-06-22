@@ -1,0 +1,45 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: manager-role
+rules:
+- apiGroups:
+  - apps
+  resources:
+  - statefulsets
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - learn.gocrazy.com
+  resources:
+  - blockchains
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - learn.gocrazy.com
+  resources:
+  - blockchains/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - learn.gocrazy.com
+  resources:
+  - blockchains/status
+  verbs:
+  - get
+  - patch
+  - update

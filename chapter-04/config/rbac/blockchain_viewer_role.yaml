@@ -1,0 +1,27 @@
+# permissions for end users to view blockchains.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: blockchain-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: blockchain-operator
+    app.kubernetes.io/part-of: blockchain-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: blockchain-viewer-role
+rules:
+- apiGroups:
+  - learn.gocrazy.com
+  resources:
+  - blockchains
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - learn.gocrazy.com
+  resources:
+  - blockchains/status
+  verbs:
+  - get

@@ -1,0 +1,4 @@
+## Append samples of your project ##
+resources:
+- learn_v1alpha1_blockchain.yaml
+#+kubebuilder:scaffold:manifestskustomizesamples
