@@ -1,0 +1,7 @@
+hourliesfile: ETHUSD_hourlies.csv
+dailiesfile: ETHUSD_dailies.csv
+hourliesleverage: 1.0
+hourliestradesize: 250.0
+dailiesleverage: 1.0
+dailiestradesize: 2500.0
+cashbalance: 5000.0
